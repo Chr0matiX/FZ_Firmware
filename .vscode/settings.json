@@ -22,5 +22,6 @@
         "--compile-commands-dir=${workspaceFolder}/build/latest",
         "--clang-tidy",
         "--header-insertion=never"
-    ]
+    ],
+    "cmake.ignoreCMakeListsMissing": true
 }
