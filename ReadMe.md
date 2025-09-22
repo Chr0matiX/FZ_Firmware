@@ -1,3 +1,118 @@
+# Flipper Zero 固件
+
+- [Flipper Zero 官方网站](https://flipperzero.one)：向朋友介绍 Flipper Zero 功能的简易方式。
+- [Flipper Zero 固件更新](https://flipperzero.one/update)：最新固件版本及 PC/移动设备升级工具。
+- [用户文档](https://docs.flipper.net)：了解设备规格、使用指南及常见问题。
+- [开发者文档](https://developer.flipper.net/flipperzero/doxygen)：深入了解固件源码、构建系统及结构。
+
+# 贡献
+
+我们的目标是围绕 Flipper 构建健康、可持续的社区，欢迎新想法和贡献。请仔细阅读本页及[行为准则](/CODE_OF_CONDUCT.md)。
+
+## 需要帮助
+
+优先查阅[用户文档](https://docs.flipper.net)。如未找到答案，可访问[Discord 服务器](https://flipp.dev/discord)或[论坛](https://forum.flipperzero.one/)。若想参与固件开发或自定义，参考[开发者文档](https://developer.flipper.net/flipperzero/doxygen)。
+
+## 报告问题
+
+发现问题请访问[Issues](https://github.com/flipperdevices/flipperzero-firmware/issues)页面。描述需包含固件版本、平台及重现步骤。
+
+## 贡献代码
+
+提交 PR 前，确认更改是否必须包含在固件中。许多想法可作为外部应用实现并发布到[Flipper 应用目录](https://github.com/flipperdevices/flipper-application-catalog)。如不确定，请在[Discord 服务器](https://flipp.dev/discord)或[Issues](https://github.com/flipperdevices/flipperzero-firmware/issues)咨询。
+
+阅读[贡献指南](/CONTRIBUTING.md)、[编码规范](/CODING_STYLE.md)，确保代码符合[项目许可](/LICENSE)。
+
+最后，提交[Pull Request](https://github.com/flipperdevices/flipperzero-firmware/pulls)，确保 CI/CD 状态全绿。
+
+# 开发
+
+Flipper Zero 固件主要用 C 编写，部分使用 C++ 和 armv7m 汇编。建议具备中级 C 编程知识。支持 Flipper 应用的语言包括 C、C++ 和 armv7m 汇编。
+
+# 固件路线图
+
+[固件路线图 Miro 板](https://miro.com/app/board/uXjVO_3D6xU=/)
+
+## 要求
+
+支持的开发平台：
+- Windows 10+（带 PowerShell 和 Git，x86_64）
+- macOS 12+（带命令行工具，x86_64/arm64）
+- Ubuntu 20.04+（带 build-essential 和 Git，x86_64）
+
+支持的在线调试器（可选但强烈推荐）：
+- [Flipper Zero Wi-Fi 开发板](https://shop.flipperzero.one/products/wifi-devboard)
+- CMSIS-DAP 兼容：Raspberry Pi Debug Probe 等
+- ST-Link（v2、v3、v3mods）
+- J-Link
+
+Flipper 构建系统会处理其他依赖。
+
+## 克隆源码
+
+确保空间充足，克隆源码：
+```shell
+git clone --recursive https://github.com/flipperdevices/flipperzero-firmware.git
+```
+
+## 构建
+
+使用 Flipper Build Tool 构建固件：
+```shell
+./fbt
+```
+
+## 使用在线调试器刷写固件
+
+连接在线调试器，使用 Flipper Build Tool 刷写固件：
+```shell
+./fbt flash
+```
+
+## 使用 USB 刷写固件
+
+确保 Flipper Zero 开机且固件正常，连接 USB 线，使用 Flipper Build Tool 刷写：
+```shell
+./fbt flash_usb
+```
+
+## 文档
+
+- [Flipper Build Tool](/documentation/fbt.md)：构建、刷写和调试 Flipper 软件
+- [应用](/documentation/AppsOnSDCard.md)、[应用清单](/documentation/AppManifests.md)：开发、构建、部署和调试 Flipper 应用
+- [硬件组合与修复](/documentation/KeyCombo.md)：从严重问题中恢复设备
+- [Flipper 文件格式](/documentation/file_formats)：设备数据存储及操作
+- [通用遥控](/documentation/UniversalRemotes.md)：为通用遥控数据库贡献红外遥控
+- [固件路线图](https://miro.com/app/board/uXjVO_3D6xU=/)
+- 更多内容见[开发者文档](https://developer.flipper.net/flipperzero/doxygen)
+
+# 项目结构
+
+- `applications`：固件使用的应用和服务
+- `applications_users`：用户添加的应用和服务
+- `assets`：应用和服务使用的资源
+- `documentation`：文档生成系统配置和输入文件
+- `furi`：Furi 核心，操作系统级原语和辅助工具
+- `lib`：自有及第三方库、驱动、工具等
+- `site_scons`：构建系统配置和模块
+- `scripts`：辅助脚本和 Python 库
+- `targets`：固件目标，平台特定代码
+
+详情见各目录下的 `ReadMe.md` 文件。
+
+# 链接
+
+- Discord: [flipp.dev/discord](https://flipp.dev/discord)
+- 网站: [flipperzero.one](https://flipperzero.one)
+- 论坛: [forum.flipperzero.one](https://forum.flipperzero.one/)
+- Kickstarter: [kickstarter.com](https://www.kickstarter.com/projects/flipper-devices/flipper-zero-tamagochi-for-hackers)
+
+## SAST 工具
+
+- [PVS-Studio](https://pvs-studio.com/pvs-studio/?utm_source=website&utm_medium=github&utm_campaign=open_source)：C、C++、C# 和 Java 代码静态分析工具。
+
+------------------------------------------------------------------------------------------
+
 # Flipper Zero Firmware
 
 - [Flipper Zero Official Website](https://flipperzero.one). A simple way to explain to your friends what Flipper Zero can do.
